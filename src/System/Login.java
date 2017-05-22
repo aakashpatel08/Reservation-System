@@ -28,27 +28,27 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlLogin = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         lblUserName = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnForgetPassword = new javax.swing.JButton();
         lblPassword = new javax.swing.JLabel();
         lblLincolnMotel = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         lblUser = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lincoln Motel");
         setLocation(new java.awt.Point(400, 100));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton1.setText("Login");
+        btnLogin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnLogin.setText("Login");
 
         lblUserName.setText("User Name:");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton2.setText("Forget Password");
+        btnForgetPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnForgetPassword.setText("Forget Password");
 
         lblPassword.setText("Password:");
 
@@ -56,8 +56,8 @@ public class Login extends javax.swing.JFrame {
 
         lblUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Downloads\\rsz_login-icon-png-27.png")); // NOI18N
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton3.setText("Exit");
+        btnExit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnExit.setText("Exit");
 
         javax.swing.GroupLayout pnlLoginLayout = new javax.swing.GroupLayout(pnlLogin);
         pnlLogin.setLayout(pnlLoginLayout);
@@ -81,11 +81,11 @@ public class Login extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(btnLogin)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(btnForgetPassword)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(btnExit)
                         .addGap(55, 55, 55))))
         );
         pnlLoginLayout.setVerticalGroup(
@@ -106,9 +106,9 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(lblPassword))))
                 .addGap(8, 8, 8)
                 .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnLogin)
+                    .addComponent(btnForgetPassword)
+                    .addComponent(btnExit))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
@@ -164,9 +164,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnForgetPassword;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JLabel lblLincolnMotel;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUser;
