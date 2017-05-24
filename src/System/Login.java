@@ -5,6 +5,9 @@
  */
 package System;
 
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aakash
@@ -44,6 +47,11 @@ public class Login extends javax.swing.JFrame {
 
         btnLogin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         lblUserName.setText("User Name:");
 
@@ -58,6 +66,17 @@ public class Login extends javax.swing.JFrame {
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlLoginLayout = new javax.swing.GroupLayout(pnlLogin);
         pnlLogin.setLayout(pnlLoginLayout);
@@ -129,6 +148,54 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+            String username = txtUserName.getText();
+            String password = txtPassword.getText();
+
+            if (username.contains("admin") && password.contains("admin"))
+            {
+                txtUserName.setText(null);
+                txtPassword.setText(null);
+                //systemExit();
+                //close();
+                ReservationData info = new ReservationData();
+                info.setVisible(true);
+            }else {
+                JOptionPane.showMessageDialog(null, "Invalid Username or Password", "Invalid Login", JOptionPane.ERROR_MESSAGE);
+                txtUserName.setText("");
+                txtPassword.setText("");
+                txtUserName.requestFocus();
+            }
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        String username = txtUserName.getText();
+        String password = txtPassword.getText();
+
+        if (username.contains("admin") && password.contains("admin"))
+        {
+            txtUserName.setText(null);
+            txtPassword.setText(null);
+            //systemExit();
+            //close();
+            //System.out.println("CLOSED");
+            ReservationData reserves = new ReservationData();
+            reserves.setVisible(true);
+            //close();
+        }else {
+            JOptionPane.showMessageDialog(null, "Invalid Username or Password", "Invalid Login", JOptionPane.ERROR_MESSAGE);
+            txtUserName.setText("");
+            txtPassword.setText("");
+            txtUserName.requestFocus();
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments

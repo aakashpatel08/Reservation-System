@@ -29,68 +29,22 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblRoom" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblStreet" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCity" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblState" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblZipCode" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPhoneNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblIdNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCreditCardNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblExpirationDate" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCVCNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCheckin" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCheckout" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRate" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtName" alignment="1" max="32767" attributes="0"/>
-                          <Component id="txtStreet" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtCity" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtState" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtZipCode" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtPhoneNumber" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtIdNumber" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtCreditCardNumber" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtExpirationDate" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtCVCNumber" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtCheckout" alignment="0" pref="140" max="32767" attributes="0"/>
-                          <Component id="txtCheckin" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtRoom" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtRate" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
-                              <Component id="lblTaxExemption" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cboTaxExemption" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" pref="1122" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="btnSave" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnClear" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="1209" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -98,215 +52,26 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblRoom" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtRoom" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblName" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtName" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblStreet" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtStreet" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblCity" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCity" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblState" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtState" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblZipCode" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtZipCode" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblPhoneNumber" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPhoneNumber" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblIdNumber" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtIdNumber" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblCreditCardNumber" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCreditCardNumber" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblExpirationDate" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtExpirationDate" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblCVCNumber" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCVCNumber" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblCheckin" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCheckin" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblCheckout" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCheckout" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="jScrollPane1" min="-2" pref="510" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblRate" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cboTaxExemption" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblTaxExemption" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="txtRate" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnDelete" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="59" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblRoom">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Room"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Name"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblStreet">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Street"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblCity">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="City"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblState">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="State"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblZipCode">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Zip Code"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblPhoneNumber">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Phone Number"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblIdNumber">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Id Number"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblCreditCardNumber">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Credit Card Number"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblExpirationDate">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Expiration Date"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblCVCNumber">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CVC Number"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblCheckin">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Checkin"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblCheckout">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Checkout"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblRate">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Rate"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtName">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtCity">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtState">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtZipCode">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtIdNumber">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtCreditCardNumber">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtExpirationDate">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtCVCNumber">
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cboTaxExemption">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="Yes"/>
-            <StringItem index="1" value="No"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblTaxExemption">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Tax Exemption"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtStreet">
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="txtCheckin">
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="txtCheckout">
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="txtPhoneNumber">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="(###) ###-####" subtype="-1" type="5"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnSave">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="2" name="C:\Users\Aakash\Desktop\Reservation System Images\Save.gif"/>
@@ -314,7 +79,7 @@
         <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnUpdate">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="2" name="C:\Users\Aakash\Desktop\Reservation System Images\Update.png"/>
@@ -322,7 +87,7 @@
         <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="btnClear">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="2" name="C:\Users\Aakash\Desktop\Reservation System Images\Clear.png"/>
@@ -330,7 +95,7 @@
         <Property name="text" type="java.lang.String" value="Clear"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="btnDelete">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="2" name="C:\Users\Aakash\Desktop\Reservation System Images\Delete.png"/>
@@ -345,8 +110,17 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="tblReservation">
           <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Reservations">
+                  <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Reservations"/>
+                  </Border>
+                </TitledBorder>
+              </Border>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="0">
                 <Column editable="true" title="Title 1" type="java.lang.Object"/>
@@ -386,19 +160,282 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JFormattedTextField" name="txtRoom">
+    <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="###" subtype="-1" type="5"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Customer Details">
+              <Font PropertyName="font" name="Tahoma" size="14" style="1"/>
+              <Color PropertyName="color" blue="0" green="0" red="99" type="rgb"/>
+            </TitledBorder>
+          </Border>
         </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="txtRate">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format format="&#xa4;&#xa4;#,##0.00" subtype="-1" type="4"/>
-        </Property>
-      </Properties>
-    </Component>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblRoom" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblName" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblStreet" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCity" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblState" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblZipCode" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPhoneNumber" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblIdNumber" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCreditCardNumber" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblExpirationDate" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCVCNumber" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCheckin" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCheckout" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblRate" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cboTaxExemption" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="txtRate" min="-2" pref="140" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtCheckin" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="txtCVCNumber" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="txtExpirationDate" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="txtRoom" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="txtName" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="txtStreet" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="txtCity" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="txtState" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="txtZipCode" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="txtPhoneNumber" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="txtIdNumber" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="txtCreditCardNumber" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="txtCheckout" min="-2" pref="140" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblRoom" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtRoom" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblName" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtName" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblStreet" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtStreet" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblCity" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCity" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblState" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtState" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblZipCode" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtZipCode" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblPhoneNumber" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPhoneNumber" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblIdNumber" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtIdNumber" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblCreditCardNumber" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCreditCardNumber" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblExpirationDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtExpirationDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblCVCNumber" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCVCNumber" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblCheckin" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCheckin" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblCheckout" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCheckout" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblRate" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtRate" min="-2" max="-2" attributes="0"/>
+                      <Component id="cboTaxExemption" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JFormattedTextField" name="txtRoom">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="###" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPhoneNumber">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Phone Number"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblStreet">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Street"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblCity">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="City"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblCheckout">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Checkout"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="txtCheckin">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblCheckin">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Checkin"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtExpirationDate">
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="txtRate">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="&#xa4;&#xa4;#,##0.00" subtype="-1" type="4"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblState">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="State"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="txtCheckout">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCreditCardNumber">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblExpirationDate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Expiration Date"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblRoom">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Room"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtState">
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="txtPhoneNumber">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="(###) ###-####" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblName">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Name"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtName">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblCreditCardNumber">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Credit Card Number"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblRate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Rate (Tax Exemption)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblIdNumber">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Id Number"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblCVCNumber">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CVC Number"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCity">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtIdNumber">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCVCNumber">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtStreet">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtZipCode">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblZipCode">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zip Code"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cboTaxExemption">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Yes"/>
+                <StringItem index="1" value="No"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
