@@ -6,6 +6,12 @@
 package System;
 
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,10 +24,45 @@ public class ReservationData extends javax.swing.JFrame {
      */
     public ReservationData() {
         initComponents();
+        //Set window to full screen
         Toolkit tk = Toolkit.getDefaultToolkit();
         int xSize = (int) tk.getScreenSize().getWidth();
         int ySize = (int) tk.getScreenSize().getHeight();
         this.setSize(xSize, ySize);
+        
+        DefaultTableModel model = (DefaultTableModel) tblReservation.getModel();
+        try {
+            String sql="Select * from AAKASH.CUSTOMER";
+            Connection con= (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/Reservations","aakash","patel");
+            JOptionPane.showMessageDialog(this, "Connection Successful");
+            Statement stmt=con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                int id= Integer.parseInt(rs.getString("ID"));
+                int room = Integer.parseInt(rs.getString("ROOM"));
+                String name = rs.getString("NAME");
+                String street= rs.getString("STREET");
+                String city = rs.getString("CITY");
+                String state = rs.getString("STATE");
+                int zip = Integer.parseInt(rs.getString("ZIPCODE"));
+                String phone= rs.getString("PHONENUMBER");
+                String idnumber = rs.getString("IDNUMBER");
+                String credit= rs.getString("CREDITCARDNUMBER");
+                String expiration = rs.getString("EXPIRATIONDATE");
+                String cvc = rs.getString("CVCNUMBER");
+                String checkin= rs.getString("CHECKIN");
+                String checkout= rs.getString("CHECKOUT");
+                String rate = rs.getString("RATE");
+                model.addRow(new Object []{
+                    id, room, name,street, city, state, zip, phone, idnumber, credit, expiration, cvc, checkin, checkout, rate
+                });
+            }
+        }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        //Update_table();
     }
 
     /**
@@ -88,13 +129,12 @@ public class ReservationData extends javax.swing.JFrame {
         btnDelete.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Delete.png")); // NOI18N
         btnDelete.setText("Delete");
 
-        tblReservation.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Reservations"), "Reservations"));
         tblReservation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15"
             }
         ));
         jScrollPane1.setViewportView(tblReservation);
@@ -193,7 +233,7 @@ public class ReservationData extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCheckout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtExpirationDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(31, 31, 31))
+                .addGap(43, 43, 43))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
