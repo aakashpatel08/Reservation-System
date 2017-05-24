@@ -5,6 +5,8 @@
  */
 package System;
 
+import java.awt.Toolkit;
+
 /**
  *
  * @author Aakash
@@ -16,6 +18,10 @@ public class ReservationData extends javax.swing.JFrame {
      */
     public ReservationData() {
         initComponents();
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        int xSize = (int) tk.getScreenSize().getWidth();
+        int ySize = (int) tk.getScreenSize().getHeight();
+        this.setSize(xSize, ySize);
     }
 
     /**
@@ -27,18 +33,248 @@ public class ReservationData extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblRoom = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblStreet = new javax.swing.JLabel();
+        lblCity = new javax.swing.JLabel();
+        lblState = new javax.swing.JLabel();
+        lblZipCode = new javax.swing.JLabel();
+        lblPhoneNumber = new javax.swing.JLabel();
+        lblIdNumber = new javax.swing.JLabel();
+        lblCreditCardNumber = new javax.swing.JLabel();
+        lblExpirationDate = new javax.swing.JLabel();
+        lblCVCNumber = new javax.swing.JLabel();
+        lblCheckin = new javax.swing.JLabel();
+        lblCheckout = new javax.swing.JLabel();
+        lblRate = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        txtCity = new javax.swing.JTextField();
+        txtState = new javax.swing.JTextField();
+        txtZipCode = new javax.swing.JTextField();
+        txtIdNumber = new javax.swing.JTextField();
+        txtCreditCardNumber = new javax.swing.JTextField();
+        txtExpirationDate = new javax.swing.JTextField();
+        txtCVCNumber = new javax.swing.JTextField();
+        cboTaxExemption = new javax.swing.JComboBox<>();
+        lblTaxExemption = new javax.swing.JLabel();
+        txtStreet = new javax.swing.JTextField();
+        txtCheckin = new com.toedter.calendar.JDateChooser();
+        txtCheckout = new com.toedter.calendar.JDateChooser();
+        txtPhoneNumber = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        txtRoom = new javax.swing.JFormattedTextField();
+        txtRate = new javax.swing.JFormattedTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 700));
+        setTitle("Customer Information");
+        setAlwaysOnTop(true);
+        setLocation(new java.awt.Point(0, 0));
+        setResizable(false);
+
+        lblRoom.setText("Room");
+
+        lblName.setText("Name");
+
+        lblStreet.setText("Street");
+
+        lblCity.setText("City");
+
+        lblState.setText("State");
+
+        lblZipCode.setText("Zip Code");
+
+        lblPhoneNumber.setText("Phone Number");
+
+        lblIdNumber.setText("Id Number");
+
+        lblCreditCardNumber.setText("Credit Card Number");
+
+        lblExpirationDate.setText("Expiration Date");
+
+        lblCVCNumber.setText("CVC Number");
+
+        lblCheckin.setText("Checkin");
+
+        lblCheckout.setText("Checkout");
+
+        lblRate.setText("Rate");
+
+        cboTaxExemption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+
+        lblTaxExemption.setText("Tax Exemption");
+
+        try {
+            txtPhoneNumber.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###) ###-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Save.gif")); // NOI18N
+        jButton1.setText("Save");
+
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Update.png")); // NOI18N
+        jButton2.setText("Update");
+
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Clear.png")); // NOI18N
+        jButton3.setText("Clear");
+
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Delete.png")); // NOI18N
+        jButton4.setText("Delete");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        try {
+            txtRoom.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        txtRate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤¤#,##0.00"))));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRoom)
+                            .addComponent(lblName)
+                            .addComponent(lblStreet)
+                            .addComponent(lblCity)
+                            .addComponent(lblState)
+                            .addComponent(lblZipCode)
+                            .addComponent(lblPhoneNumber)
+                            .addComponent(lblIdNumber)
+                            .addComponent(lblCreditCardNumber)
+                            .addComponent(lblExpirationDate)
+                            .addComponent(lblCVCNumber)
+                            .addComponent(lblCheckin)
+                            .addComponent(lblCheckout)
+                            .addComponent(lblRate))
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtStreet)
+                            .addComponent(txtCity)
+                            .addComponent(txtState)
+                            .addComponent(txtZipCode)
+                            .addComponent(txtPhoneNumber)
+                            .addComponent(txtIdNumber)
+                            .addComponent(txtCreditCardNumber)
+                            .addComponent(txtExpirationDate)
+                            .addComponent(txtCVCNumber)
+                            .addComponent(txtCheckout, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(txtCheckin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtRoom)
+                            .addComponent(txtRate))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(lblTaxExemption)
+                                .addGap(18, 18, 18)
+                                .addComponent(cboTaxExemption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1122, Short.MAX_VALUE)
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRoom)
+                            .addComponent(txtRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblName)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblStreet)
+                            .addComponent(txtStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCity)
+                            .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblState)
+                            .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblZipCode)
+                            .addComponent(txtZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPhoneNumber)
+                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIdNumber)
+                            .addComponent(txtIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCreditCardNumber)
+                            .addComponent(txtCreditCardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblExpirationDate)
+                            .addComponent(txtExpirationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCVCNumber)
+                            .addComponent(txtCVCNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCheckin)
+                            .addComponent(txtCheckin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCheckout)
+                            .addComponent(txtCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRate)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboTaxExemption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTaxExemption))
+                    .addComponent(txtRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -80,5 +316,41 @@ public class ReservationData extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cboTaxExemption;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblCVCNumber;
+    private javax.swing.JLabel lblCheckin;
+    private javax.swing.JLabel lblCheckout;
+    private javax.swing.JLabel lblCity;
+    private javax.swing.JLabel lblCreditCardNumber;
+    private javax.swing.JLabel lblExpirationDate;
+    private javax.swing.JLabel lblIdNumber;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JLabel lblRate;
+    private javax.swing.JLabel lblRoom;
+    private javax.swing.JLabel lblState;
+    private javax.swing.JLabel lblStreet;
+    private javax.swing.JLabel lblTaxExemption;
+    private javax.swing.JLabel lblZipCode;
+    private javax.swing.JTextField txtCVCNumber;
+    private com.toedter.calendar.JDateChooser txtCheckin;
+    private com.toedter.calendar.JDateChooser txtCheckout;
+    private javax.swing.JTextField txtCity;
+    private javax.swing.JTextField txtCreditCardNumber;
+    private javax.swing.JTextField txtExpirationDate;
+    private javax.swing.JTextField txtIdNumber;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JFormattedTextField txtPhoneNumber;
+    private javax.swing.JFormattedTextField txtRate;
+    private javax.swing.JFormattedTextField txtRoom;
+    private javax.swing.JTextField txtState;
+    private javax.swing.JTextField txtStreet;
+    private javax.swing.JTextField txtZipCode;
     // End of variables declaration//GEN-END:variables
 }

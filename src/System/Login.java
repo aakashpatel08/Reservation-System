@@ -34,9 +34,9 @@ public class Login extends javax.swing.JFrame {
         btnForgetPassword = new javax.swing.JButton();
         lblPassword = new javax.swing.JLabel();
         lblLincolnMotel = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         lblUser = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lincoln Motel");
@@ -83,9 +83,9 @@ public class Login extends javax.swing.JFrame {
                                     .addComponent(lblUserName)
                                     .addComponent(lblPassword))
                                 .addGap(75, 75, 75)
-                                .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                                    .addComponent(txtPassword))))
                         .addContainerGap())))
         );
         pnlLoginLayout.setVerticalGroup(
@@ -174,7 +174,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JPanel pnlLogin;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
