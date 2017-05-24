@@ -47,7 +47,6 @@ public class ReservationData extends javax.swing.JFrame {
         lblCheckout = new javax.swing.JLabel();
         txtCheckin = new com.toedter.calendar.JDateChooser();
         lblCheckin = new javax.swing.JLabel();
-        txtExpirationDate = new javax.swing.JTextField();
         txtRate = new javax.swing.JFormattedTextField();
         lblState = new javax.swing.JLabel();
         txtCheckout = new com.toedter.calendar.JDateChooser();
@@ -69,6 +68,7 @@ public class ReservationData extends javax.swing.JFrame {
         txtZipCode = new javax.swing.JTextField();
         lblZipCode = new javax.swing.JLabel();
         cboTaxExemption = new javax.swing.JComboBox<>();
+        txtExpirationDate = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Customer Information");
@@ -179,7 +179,6 @@ public class ReservationData extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCheckin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCVCNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtExpirationDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtRoom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtStreet, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,7 +190,9 @@ public class ReservationData extends javax.swing.JFrame {
                                     .addComponent(txtCreditCardNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addComponent(txtCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCheckout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtExpirationDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(31, 31, 31))
         );
         jPanel2Layout.setVerticalGroup(
@@ -234,10 +235,10 @@ public class ReservationData extends javax.swing.JFrame {
                     .addComponent(lblCreditCardNumber)
                     .addComponent(txtCreditCardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblExpirationDate)
                     .addComponent(txtExpirationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCVCNumber)
                     .addComponent(txtCVCNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -286,7 +287,7 @@ public class ReservationData extends javax.swing.JFrame {
                     .addComponent(btnUpdate)
                     .addComponent(btnClear)
                     .addComponent(btnDelete))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane1)
@@ -359,7 +360,7 @@ public class ReservationData extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser txtCheckout;
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtCreditCardNumber;
-    private javax.swing.JTextField txtExpirationDate;
+    private com.toedter.calendar.JDateChooser txtExpirationDate;
     private javax.swing.JTextField txtIdNumber;
     private javax.swing.JTextField txtName;
     private javax.swing.JFormattedTextField txtPhoneNumber;

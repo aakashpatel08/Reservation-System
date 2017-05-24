@@ -60,7 +60,7 @@
                   <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnDelete" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="59" max="32767" attributes="0"/>
+              <EmptySpace pref="62" max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -207,7 +207,6 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtCheckin" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
                                       <Component id="txtCVCNumber" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="txtExpirationDate" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
                                       <Component id="txtRoom" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
                                       <Component id="txtName" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
                                       <Component id="txtStreet" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
@@ -223,7 +222,10 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                          <Component id="txtCheckout" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtCheckout" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="txtExpirationDate" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -279,11 +281,11 @@
                       <Component id="txtCreditCardNumber" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblExpirationDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtExpirationDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblExpirationDate" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtExpirationDate" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblCVCNumber" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCVCNumber" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -342,8 +344,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Checkin"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtExpirationDate">
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtRate">
           <Properties>
@@ -434,6 +434,8 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="txtExpirationDate">
         </Component>
       </SubComponents>
     </Container>
