@@ -78,6 +78,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnUpdate">
       <Properties>
@@ -86,6 +89,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnClear">
       <Properties>
@@ -214,6 +220,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblReservationMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -253,16 +262,16 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="cboTaxExemption" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="txtRate" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtRate" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtCheckin" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="jDateCheckinDate" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
                                       <Component id="txtCVCNumber" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
                                       <Component id="txtRoom" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
                                       <Component id="txtName" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
@@ -276,16 +285,17 @@
                                   </Group>
                               </Group>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtCheckout" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
-                              <Component id="txtExpirationDate" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="jDateCheckoutDate" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="jDateExpirationDate" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -340,7 +350,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblExpirationDate" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtExpirationDate" min="-2" max="-2" attributes="0"/>
+                      <Component id="jDateExpirationDate" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -350,18 +360,20 @@
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblCheckin" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCheckin" min="-2" max="-2" attributes="0"/>
+                      <Component id="jDateCheckinDate" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblCheckout" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCheckout" min="-2" max="-2" attributes="0"/>
+                      <Component id="jDateCheckoutDate" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblRate" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtRate" min="-2" max="-2" attributes="0"/>
-                      <Component id="cboTaxExemption" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cboTaxExemption" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
           </Group>
@@ -395,18 +407,14 @@
             <Property name="text" type="java.lang.String" value="Checkout"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="txtCheckin">
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateCheckinDate">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCheckin">
           <Properties>
             <Property name="text" type="java.lang.String" value="Checkin"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtRate">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format format="&#xa4;&#xa4;#,##0.00" subtype="-1" type="4"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblState">
@@ -414,7 +422,10 @@
             <Property name="text" type="java.lang.String" value="State"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="txtCheckout">
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateCheckoutDate">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCreditCardNumber">
         </Component>
@@ -433,7 +444,7 @@
         <Component class="javax.swing.JFormattedTextField" name="txtPhoneNumber">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="(###) ###-####" subtype="-1" type="5"/>
+              <Format format="(###)###-####" subtype="-1" type="5"/>
             </Property>
           </Properties>
         </Component>
@@ -492,7 +503,12 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="txtExpirationDate">
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateExpirationDate">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtRate">
         </Component>
       </SubComponents>
     </Container>

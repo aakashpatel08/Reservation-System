@@ -8,10 +8,22 @@ package System;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -34,7 +46,7 @@ public class ReservationData extends javax.swing.JFrame {
         try {
             String sql="Select * from AAKASH.CUSTOMER";
             Connection con= (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/Reservations","aakash","patel");
-            JOptionPane.showMessageDialog(this, "Connection Successful");
+            JOptionPane.showMessageDialog(null, "Connection Successful!", "Access Granted", JOptionPane.ERROR_MESSAGE);
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next())
@@ -62,8 +74,9 @@ public class ReservationData extends javax.swing.JFrame {
         catch(Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        //Update_table();
-    }
+        Update_table();
+    }  
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,11 +99,10 @@ public class ReservationData extends javax.swing.JFrame {
         lblStreet = new javax.swing.JLabel();
         lblCity = new javax.swing.JLabel();
         lblCheckout = new javax.swing.JLabel();
-        txtCheckin = new com.toedter.calendar.JDateChooser();
+        jDateCheckinDate = new com.toedter.calendar.JDateChooser();
         lblCheckin = new javax.swing.JLabel();
-        txtRate = new javax.swing.JFormattedTextField();
         lblState = new javax.swing.JLabel();
-        txtCheckout = new com.toedter.calendar.JDateChooser();
+        jDateCheckoutDate = new com.toedter.calendar.JDateChooser();
         txtCreditCardNumber = new javax.swing.JTextField();
         lblExpirationDate = new javax.swing.JLabel();
         lblRoom = new javax.swing.JLabel();
@@ -109,7 +121,8 @@ public class ReservationData extends javax.swing.JFrame {
         txtZipCode = new javax.swing.JTextField();
         lblZipCode = new javax.swing.JLabel();
         cboTaxExemption = new javax.swing.JComboBox<>();
-        txtExpirationDate = new com.toedter.calendar.JDateChooser();
+        jDateExpirationDate = new com.toedter.calendar.JDateChooser();
+        txtRate = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Customer Information");
@@ -119,9 +132,19 @@ public class ReservationData extends javax.swing.JFrame {
 
         btnSave.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Save.gif")); // NOI18N
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Update.png")); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnClear.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Clear.png")); // NOI18N
         btnClear.setText("Clear");
@@ -137,6 +160,11 @@ public class ReservationData extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15"
             }
         ));
+        tblReservation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblReservationMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblReservation);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(153, 0, 0))); // NOI18N
@@ -155,18 +183,20 @@ public class ReservationData extends javax.swing.JFrame {
 
         lblCheckout.setText("Checkout");
 
+        jDateCheckinDate.setDateFormatString("yyyy-MM-dd");
+
         lblCheckin.setText("Checkin");
 
-        txtRate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤¤#,##0.00"))));
-
         lblState.setText("State");
+
+        jDateCheckoutDate.setDateFormatString("yyyy-MM-dd");
 
         lblExpirationDate.setText("Expiration Date");
 
         lblRoom.setText("Room");
 
         try {
-            txtPhoneNumber.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###) ###-####")));
+            txtPhoneNumber.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###)###-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -184,6 +214,8 @@ public class ReservationData extends javax.swing.JFrame {
         lblZipCode.setText("Zip Code");
 
         cboTaxExemption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+
+        jDateExpirationDate.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -209,15 +241,15 @@ public class ReservationData extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(cboTaxExemption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtRate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtRate))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCheckin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jDateCheckinDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCVCNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtRoom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,13 +259,14 @@ public class ReservationData extends javax.swing.JFrame {
                                     .addComponent(txtZipCode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtPhoneNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtIdNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCreditCardNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtCreditCardNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCheckout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtExpirationDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(43, 43, 43))
+                            .addComponent(jDateCheckoutDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateExpirationDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +310,7 @@ public class ReservationData extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblExpirationDate)
-                    .addComponent(txtExpirationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateExpirationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCVCNumber)
@@ -285,16 +318,17 @@ public class ReservationData extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCheckin)
-                    .addComponent(txtCheckin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateCheckinDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCheckout)
-                    .addComponent(txtCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateCheckoutDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRate)
-                    .addComponent(txtRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboTaxExemption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboTaxExemption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -337,6 +371,169 @@ public class ReservationData extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Update_table(){
+        try{
+        String query = "select * from AAKASH.CUSTOMER";
+        Connection con= (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/Reservations","aakash","patel");
+        PreparedStatement pst = con.prepareStatement(query);
+        ResultSet rs = pst.executeQuery();
+        tblReservation.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tblReservation.getModel();
+        //if(!txtName.getText().trim().equals("")) {
+            /*model.addRow(new Object[]{txtId.getText(), txtName.getText(),txtAddress.getText(), txtPhone.getText(),  
+                txtCreditCardNumber.getText(), jDateCheckinDate.getDate(), jDateCheckoutDate.getDate()});*/
+        //}else {
+          //  lblMessage.setText("Name should not be left blank");
+        //}
+        
+        try{                      
+            String query = "insert into AAKASH.CUSTOMER(ROOM, NAME, STREET, CITY, STATE, ZIPCODE, PHONENUMBER, IDNUMBER,"
+                    + "CREDITCARDNUMBER, EXPIRATIONDATE, CVCNUMBER, CHECKIN, CHECKOUT, RATE) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            Connection con= (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/Reservations","aakash","patel");
+            PreparedStatement pst = con.prepareStatement(query);
+            
+            pst.setString(1, txtRoom.getText());
+            pst.setString(2, txtName.getText());
+            pst.setString(3, txtStreet.getText());
+            pst.setString(4, txtCity.getText());
+            pst.setString(5, txtState.getText());
+            pst.setString(6, txtZipCode.getText());
+            pst.setString(7, txtPhoneNumber.getText());
+            pst.setString(8, txtIdNumber.getText());
+            pst.setString(9, txtCreditCardNumber.getText());
+            pst.setString(10, ((JTextField)jDateExpirationDate.getDateEditor().getUiComponent()).getText());
+            pst.setString(11, txtCVCNumber.getText());
+            pst.setString(12, ((JTextField)jDateCheckinDate.getDateEditor().getUiComponent()).getText());
+            pst.setString(13, ((JTextField)jDateCheckoutDate.getDateEditor().getUiComponent()).getText());  
+            pst.setDouble(14, Double.parseDouble(txtRate.getText()));
+            
+            pst.execute();            
+            JOptionPane.showMessageDialog(this, "Reservation Saved!", "Saved", JOptionPane.ERROR_MESSAGE);            
+            pst.close();
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        Update_table();
+        
+        
+                                           
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        //lblMessage.setText("");
+        DefaultTableModel model = (DefaultTableModel) tblReservation.getModel();
+        
+        /*if(tblReservations.getSelectedRow() == -1){
+            if(tblReservations.getRowCount() == 0){
+                lblMessage.setText("No reservations found to update!");
+            }else{
+                lblMessage.setText("Please select a reservation to update");
+            }
+        }else{*/
+        /*model.setValueAt(txtId.getText(), tblReservations.getSelectedRow(), 0);
+        model.setValueAt(txtName.getText(), tblReservations.getSelectedRow(), 1);
+        model.setValueAt(txtAddress.getText(), tblReservations.getSelectedRow(), 2);
+        model.setValueAt(txtPhone.getText(), tblReservations.getSelectedRow(), 3);
+        model.setValueAt(txtCredit.getText(), tblReservations.getSelectedRow(), 4);
+        model.setValueAt(jDateCheckinDate.getDate(), tblReservations.getSelectedRow(), 5);
+        model.setValueAt(jDateCheckoutDate.getDate(), tblReservations.getSelectedRow(), 6);*/
+        //model.setValueAt(txtCheckinDate.getText(), tblReservations.getSelectedRow(), 5);
+        //model.setValueAt(txtCheckoutDate.getText(), tblReservations.getSelectedRow(), 6);
+        
+        try{
+            Connection con= (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/Reservations","aakash","patel");
+            
+            int val0 = Integer.parseInt(txtRoom.getText());
+            String name = txtName.getText();
+            String street = txtStreet.getText();
+            String city = txtCity.getText();
+            String state = txtState.getText();
+            int zip = Integer.parseInt(txtZipCode.getText());
+            String phone = txtPhoneNumber.getText();
+            String idnumber = txtIdNumber.getText();
+            String credit = txtCreditCardNumber.getText();
+            Date expirationdate = jDateExpirationDate.getDate();
+            String expiration = DateFormat.getDateInstance().format(expirationdate);
+            //String expiration = jDateExpirationDate.getDateFormatString();
+            String cvc = txtCVCNumber.getText();
+            Date checkindate = jDateCheckinDate.getDate();
+            String checkin = DateFormat.getDateInstance().format(checkindate);
+            Date checkoutdate = jDateCheckoutDate.getDate();
+            String checkout = DateFormat.getDateInstance().format(checkoutdate);
+            //String checkin = jDateCheckinDate.getDateFormatString();
+            //String checkout = jDateCheckoutDate.getDateFormatString();
+            double rate = Double.parseDouble(txtRate.getText());
+
+            String query = "update AAKASH.CUSTOMER set ROOM="+val0+", NAME='"+name+"', STREET='"+street+"', CITY='"+city+"', "
+                    + "STATE='"+state+"', ZIPCODE="+zip+", PHONENUMBER='"+phone+"', IDNUMBER='"+idnumber+"',"
+                    + " CREDITCARDNUMBER='"+credit+"', EXPIRATIONDATE='"+expiration+"', CVCNUMBER='"+cvc+"', CHECKIN='"+checkin+"',"
+                    + " CHECKOUT='"+checkout+"', RATE = "+rate+" where NAME='"+name+"' AND CHECKIN='"+checkin+"' ";
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            
+            //String val5 = jDateCheckinDate.getDateEditor().getUiComponent().getText();
+            
+            /*pst.setString(1, txtName.getText());
+            pst.setString(2, txtAddress.getText());
+            pst.setString(3, txtPhone.getText());
+            pst.setString(4, txtCredit.getText());
+            pst.setString(5, ((JTextField)jDateCheckinDate.getDateEditor().getUiComponent()).getText());
+            pst.setString(6, ((JTextField)jDateCheckoutDate.getDateEditor().getUiComponent()).getText());*/           
+            
+
+            pst.execute();
+            System.out.println("Checkin Date Is: " + checkindate);
+            System.out.println("Checkout Date Is: " + checkindate);
+            JDialog dialog = new JOptionPane("Reservation Updated!").createDialog("Updated");  
+            dialog.setAlwaysOnTop(true);  
+            dialog.setVisible(true);              
+            //JOptionPane.showMessageDialog(null, "Reservation Updated");            
+            pst.close();            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        Update_table();        
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void tblReservationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblReservationMouseClicked
+        DefaultTableModel model = (DefaultTableModel) tblReservation.getModel();
+        
+        txtRoom.setText(model.getValueAt(tblReservation.getSelectedRow(), 1).toString());
+        txtName.setText(model.getValueAt(tblReservation.getSelectedRow(), 2).toString());
+        txtStreet.setText(model.getValueAt(tblReservation.getSelectedRow(), 3).toString());
+        txtCity.setText(model.getValueAt(tblReservation.getSelectedRow(), 4).toString());
+        txtState.setText(model.getValueAt(tblReservation.getSelectedRow(), 5).toString());
+        txtZipCode.setText(model.getValueAt(tblReservation.getSelectedRow(), 6).toString());
+        txtPhoneNumber.setText(model.getValueAt(tblReservation.getSelectedRow(), 7).toString());
+        txtIdNumber.setText(model.getValueAt(tblReservation.getSelectedRow(), 8).toString());
+        txtCreditCardNumber.setText(model.getValueAt(tblReservation.getSelectedRow(), 9).toString());
+        //jDateExpirationDate.setText(model.getValueAt(tblReservation.getSelectedRow(), 6).toString());
+        txtCVCNumber.setText(model.getValueAt(tblReservation.getSelectedRow(), 11).toString());
+        txtRate.setText(model.getValueAt(tblReservation.getSelectedRow(), 14).toString());
+        //txtState.setText(model.getValueAt(tblReservation.getSelectedRow(), 6).toString());
+
+        //jDateCheckinDate.setDateFormatString(model.getValueAt(tblReservations.getSelectedRow(), 5).toString());
+        //jDateCheckoutDate.setDateFormatString(model.getValueAt(tblReservations.getSelectedRow(), 6).toString());
+        try{
+            int index = tblReservation.getSelectedRow();
+            Date expirationdate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(index, 10));
+            Date checkindate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(index, 12));
+            Date checkoutdate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(index, 13));
+            jDateExpirationDate.setDate(expirationdate);
+            jDateCheckinDate.setDate(checkindate);
+            jDateCheckoutDate.setDate(checkoutdate);
+        } catch (ParseException ex) {
+            Logger.getLogger(ReservationData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_tblReservationMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -378,6 +575,9 @@ public class ReservationData extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cboTaxExemption;
+    private com.toedter.calendar.JDateChooser jDateCheckinDate;
+    private com.toedter.calendar.JDateChooser jDateCheckoutDate;
+    private com.toedter.calendar.JDateChooser jDateExpirationDate;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCVCNumber;
@@ -396,15 +596,12 @@ public class ReservationData extends javax.swing.JFrame {
     private javax.swing.JLabel lblZipCode;
     private javax.swing.JTable tblReservation;
     private javax.swing.JTextField txtCVCNumber;
-    private com.toedter.calendar.JDateChooser txtCheckin;
-    private com.toedter.calendar.JDateChooser txtCheckout;
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtCreditCardNumber;
-    private com.toedter.calendar.JDateChooser txtExpirationDate;
     private javax.swing.JTextField txtIdNumber;
     private javax.swing.JTextField txtName;
     private javax.swing.JFormattedTextField txtPhoneNumber;
-    private javax.swing.JFormattedTextField txtRate;
+    private javax.swing.JTextField txtRate;
     private javax.swing.JFormattedTextField txtRoom;
     private javax.swing.JTextField txtState;
     private javax.swing.JTextField txtStreet;

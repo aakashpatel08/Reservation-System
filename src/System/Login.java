@@ -5,7 +5,9 @@
  */
 package System;
 
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +21,11 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+    }
+    
+    public void close(){
+        WindowEvent winClosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
     }
 
     /**
@@ -41,7 +48,7 @@ public class Login extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Lincoln Motel");
         setLocation(new java.awt.Point(400, 100));
 
@@ -158,12 +165,12 @@ public class Login extends javax.swing.JFrame {
             {
                 txtUserName.setText(null);
                 txtPassword.setText(null);
-                //systemExit();
-                //close();
-                ReservationData info = new ReservationData();
-                info.setVisible(true);
+                
+                ReservationData reserves = new ReservationData();
+                reserves.setVisible(true);
+                close();
             }else {
-                JOptionPane.showMessageDialog(null, "Invalid Username or Password", "Invalid Login", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalid Username or Password!", "Access Denied", JOptionPane.ERROR_MESSAGE);
                 txtUserName.setText("");
                 txtPassword.setText("");
                 txtUserName.requestFocus();
@@ -179,14 +186,12 @@ public class Login extends javax.swing.JFrame {
         {
             txtUserName.setText(null);
             txtPassword.setText(null);
-            //systemExit();
-            //close();
-            //System.out.println("CLOSED");
+            
             ReservationData reserves = new ReservationData();
             reserves.setVisible(true);
-            //close();
+            close();
         }else {
-            JOptionPane.showMessageDialog(null, "Invalid Username or Password", "Invalid Login", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Invalid Username or Password!", "Access Denied", JOptionPane.ERROR_MESSAGE);
             txtUserName.setText("");
             txtPassword.setText("");
             txtUserName.requestFocus();
