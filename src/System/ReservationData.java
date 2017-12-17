@@ -5,6 +5,7 @@
  */
 package System;
 
+import java.awt.Frame;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,7 +23,9 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -38,9 +41,10 @@ public class ReservationData extends javax.swing.JFrame {
         initComponents();
         //Set window to full screen
         Toolkit tk = Toolkit.getDefaultToolkit();
-        int xSize = (int) tk.getScreenSize().getWidth();
+        /*int xSize = (int) tk.getScreenSize().getWidth();
         int ySize = (int) tk.getScreenSize().getHeight();
-        this.setSize(xSize, ySize);
+        this.setSize(xSize, ySize);*/
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
         this.pack();
         DefaultTableModel model = (DefaultTableModel) tblReservation.getModel();
         try {
@@ -131,6 +135,7 @@ public class ReservationData extends javax.swing.JFrame {
         setTitle("Reservations");
         setAlwaysOnTop(true);
         setLocation(new java.awt.Point(0, 0));
+        setResizable(false);
         setSize(new java.awt.Dimension(100, 100));
 
         btnSave.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Save.gif")); // NOI18N
@@ -400,7 +405,7 @@ public class ReservationData extends javax.swing.JFrame {
                     .addComponent(btnSave)
                     .addComponent(lblSearch)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -581,6 +586,7 @@ public class ReservationData extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        txtID.setText("");
         txtRoom.setText("");
         txtName.setText("");
         txtStreet.setText("");
@@ -598,11 +604,11 @@ public class ReservationData extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        /*DefaultTableModel table = (DefaultTableModel) tblReservation.getModel();
+        DefaultTableModel table = (DefaultTableModel) tblReservation.getModel();
         String search = txtSearch.getText();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(table);
         tblReservation.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(search));*/
+        tr.setRowFilter(RowFilter.regexFilter(search));
     }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
@@ -635,7 +641,7 @@ public class ReservationData extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ReservationData().setVisible(true);
+                new ReservationData().setVisible(true);                
             }
         });
     }
