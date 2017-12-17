@@ -12,17 +12,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -41,12 +43,12 @@ public class ReservationData extends javax.swing.JFrame {
         int xSize = (int) tk.getScreenSize().getWidth();
         int ySize = (int) tk.getScreenSize().getHeight();
         this.setSize(xSize, ySize);
-        
+        this.pack();
         DefaultTableModel model = (DefaultTableModel) tblReservation.getModel();
         try {
             String sql="Select * from AAKASH.CUSTOMER";
             Connection con= (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/Reservations","aakash","patel");
-            JOptionPane.showMessageDialog(null, "Connection Successful!", "Access Granted", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Access Granted!", "Connection Successful", JOptionPane.ERROR_MESSAGE);
             Statement stmt=con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next())
@@ -123,6 +125,8 @@ public class ReservationData extends javax.swing.JFrame {
         cboTaxExemption = new javax.swing.JComboBox<>();
         jDateExpirationDate = new com.toedter.calendar.JDateChooser();
         txtRate = new javax.swing.JTextField();
+        lblSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Customer Information");
@@ -148,9 +152,19 @@ public class ReservationData extends javax.swing.JFrame {
 
         btnClear.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Clear.png")); // NOI18N
         btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         btnDelete.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Delete.png")); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         tblReservation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -331,6 +345,16 @@ public class ReservationData extends javax.swing.JFrame {
                         .addComponent(txtRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
+        lblSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblSearch.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Search.png")); // NOI18N
+        lblSearch.setText("Search");
+
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -347,25 +371,35 @@ public class ReservationData extends javax.swing.JFrame {
                         .addComponent(btnClear)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnDelete)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1209, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblSearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnUpdate)
                     .addComponent(btnClear)
-                    .addComponent(btnDelete))
-                .addContainerGap(62, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                    .addComponent(btnDelete)
+                    .addComponent(lblSearch)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
@@ -428,29 +462,12 @@ public class ReservationData extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         //lblMessage.setText("");
-        DefaultTableModel model = (DefaultTableModel) tblReservation.getModel();
-        
-        /*if(tblReservations.getSelectedRow() == -1){
-            if(tblReservations.getRowCount() == 0){
-                lblMessage.setText("No reservations found to update!");
-            }else{
-                lblMessage.setText("Please select a reservation to update");
-            }
-        }else{*/
-        /*model.setValueAt(txtId.getText(), tblReservations.getSelectedRow(), 0);
-        model.setValueAt(txtName.getText(), tblReservations.getSelectedRow(), 1);
-        model.setValueAt(txtAddress.getText(), tblReservations.getSelectedRow(), 2);
-        model.setValueAt(txtPhone.getText(), tblReservations.getSelectedRow(), 3);
-        model.setValueAt(txtCredit.getText(), tblReservations.getSelectedRow(), 4);
-        model.setValueAt(jDateCheckinDate.getDate(), tblReservations.getSelectedRow(), 5);
-        model.setValueAt(jDateCheckoutDate.getDate(), tblReservations.getSelectedRow(), 6);*/
-        //model.setValueAt(txtCheckinDate.getText(), tblReservations.getSelectedRow(), 5);
-        //model.setValueAt(txtCheckoutDate.getText(), tblReservations.getSelectedRow(), 6);
+        //DefaultTableModel model = (DefaultTableModel) tblReservation.getModel();       
         
         try{
             Connection con= (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/Reservations","aakash","patel");
             
-            int val0 = Integer.parseInt(txtRoom.getText());
+            int room = Integer.parseInt(txtRoom.getText());
             String name = txtName.getText();
             String street = txtStreet.getText();
             String city = txtCity.getText();
@@ -460,23 +477,42 @@ public class ReservationData extends javax.swing.JFrame {
             String idnumber = txtIdNumber.getText();
             String credit = txtCreditCardNumber.getText();
             Date expirationdate = jDateExpirationDate.getDate();
-            String expiration = DateFormat.getDateInstance().format(expirationdate);
+            //String expiration = DateFormat.getDateInstance().format(expirationdate);
+            String modifiedexpdate = new SimpleDateFormat("yyyy-MM-dd").format(expirationdate);
+            System.out.println(expirationdate);
+            //String expiration = DateFormat.getDateInstance().format(expirationdate);
             //String expiration = jDateExpirationDate.getDateFormatString();
             String cvc = txtCVCNumber.getText();
             Date checkindate = jDateCheckinDate.getDate();
-            String checkin = DateFormat.getDateInstance().format(checkindate);
+            String modifiedcheckindate = new SimpleDateFormat("yyyy-MM-dd").format(checkindate);
+            //String checkin = DateFormat.getDateInstance().format(checkindate);
             Date checkoutdate = jDateCheckoutDate.getDate();
-            String checkout = DateFormat.getDateInstance().format(checkoutdate);
-            //String checkin = jDateCheckinDate.getDateFormatString();
-            //String checkout = jDateCheckoutDate.getDateFormatString();
-            double rate = Double.parseDouble(txtRate.getText());
+            String modifiedcheckoutdate = new SimpleDateFormat("yyyy-MM-dd").format(checkoutdate);
+            //String checkout = DateFormat.getDateInstance().format(checkoutdate);
 
-            String query = "update AAKASH.CUSTOMER set ROOM="+val0+", NAME='"+name+"', STREET='"+street+"', CITY='"+city+"', "
-                    + "STATE='"+state+"', ZIPCODE="+zip+", PHONENUMBER='"+phone+"', IDNUMBER='"+idnumber+"',"
-                    + " CREDITCARDNUMBER='"+credit+"', EXPIRATIONDATE='"+expiration+"', CVCNUMBER='"+cvc+"', CHECKIN='"+checkin+"',"
-                    + " CHECKOUT='"+checkout+"', RATE = "+rate+" where NAME='"+name+"' AND CHECKIN='"+checkin+"' ";
+            //String checkin = jDateCheckinDate.getDateFormatString();
+            //String checkout = jDateCheckoutDate.getDateFormatString();              
+            /*String checkin = "" + jDateCheckinDate.getDate();
+            SimpleDateFormat checkindate = new SimpleDateFormat("yyyy-MM-dd");
+            checkindate.format(jDateCheckinDate.getDate());
             
-            PreparedStatement pst = con.prepareStatement(query);
+            String checkout = "" + jDateCheckoutDate.getDate();
+            SimpleDateFormat checkoutdate = new SimpleDateFormat("yyyy-MM-dd");
+            checkoutdate.format(jDateCheckoutDate.getDate());*/
+            double rate = Double.parseDouble(txtRate.getText());
+            String df = new DecimalFormat("#.##").format(rate);
+            System.out.println(df);
+
+
+            String updatequery = "update AAKASH.CUSTOMER set ROOM="+room+", NAME='"+name+"', STREET='"+street+"', CITY='"+city+"', "
+                    + "STATE='"+state+"', ZIPCODE="+zip+", PHONENUMBER='"+phone+"', IDNUMBER='"+idnumber+"',"
+                    + " CREDITCARDNUMBER='"+credit+"', EXPIRATIONDATE='"+modifiedexpdate+"', CVCNUMBER='"+cvc+"',"
+                    + "CHECKIN='"+modifiedcheckindate+"', CHECKOUT='"+modifiedcheckoutdate+"', RATE= "+df+" WHERE NAME='"+name+"'";
+            //, EXPIRATIONDATE='"+expiration+"', CVCNUMBER='"+cvc+"', CHECKIN='"+checkin+"',"
+                    //+ " CHECKOUT= '"+checkout+"' , RATE = "+rate+" where NAME='"+name+"' AND CHECKIN='"+checkin+"'";
+            
+            PreparedStatement pst = con.prepareStatement(updatequery);
+            
             
             //String val5 = jDateCheckinDate.getDateEditor().getUiComponent().getText();
             
@@ -489,12 +525,11 @@ public class ReservationData extends javax.swing.JFrame {
             
 
             pst.execute();
-            System.out.println("Checkin Date Is: " + checkindate);
-            System.out.println("Checkout Date Is: " + checkindate);
+            System.out.println("Checkin Date Is: " + modifiedcheckindate);
+            System.out.println("Checkout Date Is: " + modifiedcheckoutdate);
             JDialog dialog = new JOptionPane("Reservation Updated!").createDialog("Updated");  
             dialog.setAlwaysOnTop(true);  
             dialog.setVisible(true);              
-            //JOptionPane.showMessageDialog(null, "Reservation Updated");            
             pst.close();            
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -533,6 +568,62 @@ public class ReservationData extends javax.swing.JFrame {
             Logger.getLogger(ReservationData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tblReservationMouseClicked
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        JFrame dummyFrame = null;
+        if (dummyFrame == null) 
+        {
+            dummyFrame = new JFrame();
+        }
+        dummyFrame.setVisible(false);
+        dummyFrame.setLocation(650, 300);
+        dummyFrame.setAlwaysOnTop(true);
+        int delete = JOptionPane.showConfirmDialog(dummyFrame, "Do you really want to delete?","Delete",JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        if (delete == 0){
+            try{           
+                String query = "delete from AAKASH.CUSTOMER where NAME = ?";
+                Connection con= (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/Reservations","aakash","patel");
+                PreparedStatement pst = con.prepareStatement(query);
+
+                pst.setString(1, txtName.getText());
+                pst.execute();
+                JDialog dialog = new JOptionPane("Reservation Deleted!").createDialog("Deleted");
+                dialog.setAlwaysOnTop(true);  
+                dialog.setVisible(true);
+                pst.close();
+                dummyFrame.dispose();
+            }catch(SQLException ex){
+                Logger.getLogger(ReservationData.class.getName()).log(Level.SEVERE,null, ex);
+            }
+        }
+        Update_table();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        txtRoom.setText("");
+        txtName.setText("");
+        txtStreet.setText("");
+        txtCity.setText("");
+        txtState.setText("");
+        txtZipCode.setText("");
+        txtPhoneNumber.setText("");
+        txtIdNumber.setText("");
+        txtCreditCardNumber.setText("");
+        jDateExpirationDate.setCalendar(null);
+        txtCVCNumber.setText("");
+        jDateCheckinDate.setCalendar(null);
+        jDateCheckoutDate.setCalendar(null);
+        txtRate.setText("");
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        DefaultTableModel table = (DefaultTableModel) tblReservation.getModel();
+        String search = txtSearch.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(table);
+        tblReservation.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -591,6 +682,7 @@ public class ReservationData extends javax.swing.JFrame {
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JLabel lblRate;
     private javax.swing.JLabel lblRoom;
+    private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblState;
     private javax.swing.JLabel lblStreet;
     private javax.swing.JLabel lblZipCode;
@@ -603,6 +695,7 @@ public class ReservationData extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtPhoneNumber;
     private javax.swing.JTextField txtRate;
     private javax.swing.JFormattedTextField txtRoom;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtState;
     private javax.swing.JTextField txtStreet;
     private javax.swing.JTextField txtZipCode;
