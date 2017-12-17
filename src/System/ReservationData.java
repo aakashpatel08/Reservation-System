@@ -22,9 +22,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -116,23 +114,24 @@ public class ReservationData extends javax.swing.JFrame {
         lblRate = new javax.swing.JLabel();
         lblIdNumber = new javax.swing.JLabel();
         lblCVCNumber = new javax.swing.JLabel();
-        txtCity = new javax.swing.JTextField();
         txtIdNumber = new javax.swing.JTextField();
         txtCVCNumber = new javax.swing.JTextField();
         txtStreet = new javax.swing.JTextField();
         txtZipCode = new javax.swing.JTextField();
         lblZipCode = new javax.swing.JLabel();
-        cboTaxExemption = new javax.swing.JComboBox<>();
         jDateExpirationDate = new com.toedter.calendar.JDateChooser();
         txtRate = new javax.swing.JTextField();
+        lblID = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        txtCity = new javax.swing.JTextField();
         lblSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Customer Information");
+        setTitle("Reservations");
         setAlwaysOnTop(true);
         setLocation(new java.awt.Point(0, 0));
-        setResizable(false);
+        setSize(new java.awt.Dimension(100, 100));
 
         btnSave.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aakash\\Desktop\\Reservation System Images\\Save.gif")); // NOI18N
         btnSave.setText("Save");
@@ -188,6 +187,7 @@ public class ReservationData extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtRoom.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         lblPhoneNumber.setText("Phone Number");
 
@@ -219,7 +219,7 @@ public class ReservationData extends javax.swing.JFrame {
 
         lblCreditCardNumber.setText("Credit Card Number");
 
-        lblRate.setText("Rate (Tax Exemption)");
+        lblRate.setText("Rate");
 
         lblIdNumber.setText("Id Number");
 
@@ -227,9 +227,12 @@ public class ReservationData extends javax.swing.JFrame {
 
         lblZipCode.setText("Zip Code");
 
-        cboTaxExemption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
-
         jDateExpirationDate.setDateFormatString("yyyy-MM-dd");
+
+        lblID.setText("ID");
+
+        txtID.setEditable(false);
+        txtID.setBackground(new java.awt.Color(255, 51, 51));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -238,111 +241,112 @@ public class ReservationData extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRoom)
-                    .addComponent(lblName)
-                    .addComponent(lblStreet)
-                    .addComponent(lblCity)
-                    .addComponent(lblState)
-                    .addComponent(lblZipCode)
-                    .addComponent(lblPhoneNumber)
-                    .addComponent(lblIdNumber)
-                    .addComponent(lblCreditCardNumber)
-                    .addComponent(lblExpirationDate)
-                    .addComponent(lblCVCNumber)
-                    .addComponent(lblCheckin)
-                    .addComponent(lblCheckout)
-                    .addComponent(lblRate))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cboTaxExemption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtRate))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDateCheckinDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCVCNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtRoom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtStreet, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCity, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtState, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtZipCode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtIdNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCreditCardNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCity)
+                            .addComponent(lblState)
+                            .addComponent(lblZipCode)
+                            .addComponent(lblPhoneNumber)
+                            .addComponent(lblIdNumber)
+                            .addComponent(lblCreditCardNumber)
+                            .addComponent(lblExpirationDate)
+                            .addComponent(lblCVCNumber)
+                            .addComponent(lblCheckin)
+                            .addComponent(lblCheckout)
+                            .addComponent(lblRate)
+                            .addComponent(lblStreet))
                         .addGap(58, 58, 58)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateCheckinDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCVCNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtState, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtZipCode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCreditCardNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRoom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtStreet, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCity, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateExpirationDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jDateCheckoutDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateExpirationDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43))))
+                            .addComponent(txtRate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(43, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblName)
+                            .addComponent(lblID)
+                            .addComponent(lblRoom))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblID)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRoom)
                     .addComponent(txtRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblName)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblStreet)
-                    .addComponent(txtStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCity)
-                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblState)
-                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblZipCode)
-                    .addComponent(txtZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPhoneNumber)
-                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblIdNumber)
-                    .addComponent(txtIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCreditCardNumber)
-                    .addComponent(txtCreditCardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblExpirationDate)
-                    .addComponent(jDateExpirationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCVCNumber)
-                    .addComponent(txtCVCNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCheckin)
-                    .addComponent(jDateCheckinDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCheckout)
-                    .addComponent(jDateCheckoutDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRate)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cboTaxExemption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(txtStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(lblStreet)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblCity)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblState))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblZipCode))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPhoneNumber))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblIdNumber))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCreditCardNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCreditCardNumber))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDateExpirationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblExpirationDate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCVCNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCVCNumber))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDateCheckinDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCheckin))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDateCheckoutDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCheckout))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRate))
+                .addContainerGap())
         );
 
         lblSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -365,7 +369,7 @@ public class ReservationData extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUpdate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnClear)
@@ -373,33 +377,30 @@ public class ReservationData extends javax.swing.JFrame {
                         .addComponent(btnDelete)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblSearch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1197, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jScrollPane1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
                     .addComponent(btnUpdate)
                     .addComponent(btnClear)
                     .addComponent(btnDelete)
+                    .addComponent(btnSave)
                     .addComponent(lblSearch)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
@@ -467,6 +468,7 @@ public class ReservationData extends javax.swing.JFrame {
         try{
             Connection con= (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/Reservations","aakash","patel");
             
+            int ID = Integer.parseInt(txtID.getText());
             int room = Integer.parseInt(txtRoom.getText());
             String name = txtName.getText();
             String street = txtStreet.getText();
@@ -477,56 +479,33 @@ public class ReservationData extends javax.swing.JFrame {
             String idnumber = txtIdNumber.getText();
             String credit = txtCreditCardNumber.getText();
             Date expirationdate = jDateExpirationDate.getDate();
-            //String expiration = DateFormat.getDateInstance().format(expirationdate);
             String modifiedexpdate = new SimpleDateFormat("yyyy-MM-dd").format(expirationdate);
             System.out.println(expirationdate);
-            //String expiration = DateFormat.getDateInstance().format(expirationdate);
-            //String expiration = jDateExpirationDate.getDateFormatString();
             String cvc = txtCVCNumber.getText();
             Date checkindate = jDateCheckinDate.getDate();
             String modifiedcheckindate = new SimpleDateFormat("yyyy-MM-dd").format(checkindate);
-            //String checkin = DateFormat.getDateInstance().format(checkindate);
             Date checkoutdate = jDateCheckoutDate.getDate();
             String modifiedcheckoutdate = new SimpleDateFormat("yyyy-MM-dd").format(checkoutdate);
-            //String checkout = DateFormat.getDateInstance().format(checkoutdate);
-
-            //String checkin = jDateCheckinDate.getDateFormatString();
-            //String checkout = jDateCheckoutDate.getDateFormatString();              
-            /*String checkin = "" + jDateCheckinDate.getDate();
-            SimpleDateFormat checkindate = new SimpleDateFormat("yyyy-MM-dd");
-            checkindate.format(jDateCheckinDate.getDate());
-            
-            String checkout = "" + jDateCheckoutDate.getDate();
-            SimpleDateFormat checkoutdate = new SimpleDateFormat("yyyy-MM-dd");
-            checkoutdate.format(jDateCheckoutDate.getDate());*/
             double rate = Double.parseDouble(txtRate.getText());
             String df = new DecimalFormat("#.##").format(rate);
-            System.out.println(df);
+            //System.out.println(df);
 
 
             String updatequery = "update AAKASH.CUSTOMER set ROOM="+room+", NAME='"+name+"', STREET='"+street+"', CITY='"+city+"', "
                     + "STATE='"+state+"', ZIPCODE="+zip+", PHONENUMBER='"+phone+"', IDNUMBER='"+idnumber+"',"
                     + " CREDITCARDNUMBER='"+credit+"', EXPIRATIONDATE='"+modifiedexpdate+"', CVCNUMBER='"+cvc+"',"
-                    + "CHECKIN='"+modifiedcheckindate+"', CHECKOUT='"+modifiedcheckoutdate+"', RATE= "+df+" WHERE NAME='"+name+"'";
-            //, EXPIRATIONDATE='"+expiration+"', CVCNUMBER='"+cvc+"', CHECKIN='"+checkin+"',"
-                    //+ " CHECKOUT= '"+checkout+"' , RATE = "+rate+" where NAME='"+name+"' AND CHECKIN='"+checkin+"'";
+                    + "CHECKIN='"+modifiedcheckindate+"', CHECKOUT='"+modifiedcheckoutdate+"', RATE= "+df+" WHERE ID="+ID+"";
             
             PreparedStatement pst = con.prepareStatement(updatequery);
+            /*Statement stmt=con.createStatement();
+            ResultSet rs = stmt.executeQuery(updatequery);
+            int id= Integer.parseInt(rs.getString("ID"));*/
             
-            
-            //String val5 = jDateCheckinDate.getDateEditor().getUiComponent().getText();
-            
-            /*pst.setString(1, txtName.getText());
-            pst.setString(2, txtAddress.getText());
-            pst.setString(3, txtPhone.getText());
-            pst.setString(4, txtCredit.getText());
-            pst.setString(5, ((JTextField)jDateCheckinDate.getDateEditor().getUiComponent()).getText());
-            pst.setString(6, ((JTextField)jDateCheckoutDate.getDateEditor().getUiComponent()).getText());*/           
-            
+            //String val5 = jDateCheckinDate.getDateEditor().getUiComponent().getText();         
 
             pst.execute();
-            System.out.println("Checkin Date Is: " + modifiedcheckindate);
-            System.out.println("Checkout Date Is: " + modifiedcheckoutdate);
+            //System.out.println("Checkin Date Is: " + modifiedcheckindate);
+            //System.out.println("Checkout Date Is: " + modifiedcheckoutdate);
             JDialog dialog = new JOptionPane("Reservation Updated!").createDialog("Updated");  
             dialog.setAlwaysOnTop(true);  
             dialog.setVisible(true);              
@@ -540,6 +519,7 @@ public class ReservationData extends javax.swing.JFrame {
     private void tblReservationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblReservationMouseClicked
         DefaultTableModel model = (DefaultTableModel) tblReservation.getModel();
         
+        txtID.setText(model.getValueAt(tblReservation.getSelectedRow(), 0).toString());
         txtRoom.setText(model.getValueAt(tblReservation.getSelectedRow(), 1).toString());
         txtName.setText(model.getValueAt(tblReservation.getSelectedRow(), 2).toString());
         txtStreet.setText(model.getValueAt(tblReservation.getSelectedRow(), 3).toString());
@@ -582,11 +562,11 @@ public class ReservationData extends javax.swing.JFrame {
         
         if (delete == 0){
             try{           
-                String query = "delete from AAKASH.CUSTOMER where NAME = ?";
+                String query = "delete from AAKASH.CUSTOMER where ID = ?";
                 Connection con= (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/Reservations","aakash","patel");
                 PreparedStatement pst = con.prepareStatement(query);
 
-                pst.setString(1, txtName.getText());
+                pst.setString(1, txtID.getText());
                 pst.execute();
                 JDialog dialog = new JOptionPane("Reservation Deleted!").createDialog("Deleted");
                 dialog.setAlwaysOnTop(true);  
@@ -618,11 +598,11 @@ public class ReservationData extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        DefaultTableModel table = (DefaultTableModel) tblReservation.getModel();
+        /*DefaultTableModel table = (DefaultTableModel) tblReservation.getModel();
         String search = txtSearch.getText();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(table);
         tblReservation.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(search));
+        tr.setRowFilter(RowFilter.regexFilter(search));*/
     }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
@@ -665,7 +645,6 @@ public class ReservationData extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cboTaxExemption;
     private com.toedter.calendar.JDateChooser jDateCheckinDate;
     private com.toedter.calendar.JDateChooser jDateCheckoutDate;
     private com.toedter.calendar.JDateChooser jDateExpirationDate;
@@ -677,6 +656,7 @@ public class ReservationData extends javax.swing.JFrame {
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblCreditCardNumber;
     private javax.swing.JLabel lblExpirationDate;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblIdNumber;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPhoneNumber;
@@ -690,6 +670,7 @@ public class ReservationData extends javax.swing.JFrame {
     private javax.swing.JTextField txtCVCNumber;
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtCreditCardNumber;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtIdNumber;
     private javax.swing.JTextField txtName;
     private javax.swing.JFormattedTextField txtPhoneNumber;
